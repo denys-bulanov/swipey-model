@@ -16,11 +16,11 @@ type NewPasswordApi = {
   newPassword: string
   token: string
 }
-
+const url = `https://${process.env.NEXT_PUBLIC_URL}/api/v1/auth`
 export const signUpApi = async ({ email, password }: SignUpApi) => {
   try {
     const { data } = await axios.post(
-      'https://ud824.com/api/v1/auth/pre-lander',
+      `${url}/pre-lander`,
       { email, password },
       {
         headers: {
@@ -39,7 +39,7 @@ export const signUpApi = async ({ email, password }: SignUpApi) => {
 export const signInApi = async ({ email, password }: SignUpApi) => {
   try {
     const { data } = await axios.post(
-      'https://ud824.com/api/v1/auth/pre-lander/login',
+      `${url}/pre-lander/login`,
       { email, password },
       {
         headers: {
@@ -58,7 +58,7 @@ export const signInApi = async ({ email, password }: SignUpApi) => {
 export const resetPasswordApi = async ({ email }: ResetPasswordApi) => {
   try {
     const { data } = await axios.post(
-      'https://ud824.com/api/v1/auth/reset-password',
+      `${url}/reset-password`,
       { email },
       {
         headers: {
@@ -77,7 +77,7 @@ export const resetPasswordApi = async ({ email }: ResetPasswordApi) => {
 export const otpApi = async ({ email, otp }: OtpApi) => {
   try {
     const { data } = await axios.post(
-      'https://ud824.com/api/v1/auth/verify-reset-password-otp',
+      `${url}/verify-reset-password-otp`,
       { email, otp: +otp },
       {
         headers: {
@@ -96,7 +96,7 @@ export const otpApi = async ({ email, otp }: OtpApi) => {
 export const newPasswordApi = async ({ newPassword, token }: NewPasswordApi) => {
   try {
     const { data } = await axios.post(
-      'https://ud824.com/api/v1/auth/set-new-password',
+      `${url}/set-new-password`,
       { newPassword },
       {
         headers: {
