@@ -24,7 +24,7 @@ export const signUpApi = async ({ email, password }: SignUpApi) => {
       { email, password },
       {
         headers: {
-          'x-api-key': process.env.NEXT_PUBLIC_API_X,
+          'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
           'Content-Type': 'application/json',
         },
       },
@@ -43,7 +43,7 @@ export const signInApi = async ({ email, password }: SignUpApi) => {
       { email, password },
       {
         headers: {
-          'x-api-key': process.env.NEXT_PUBLIC_API_X,
+          'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
           'Content-Type': 'application/json',
         },
       },
@@ -62,7 +62,7 @@ export const resetPasswordApi = async ({ email }: ResetPasswordApi) => {
       { email },
       {
         headers: {
-          'x-api-key': process.env.NEXT_PUBLIC_API_X,
+          'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
           'Content-Type': 'application/json',
         },
       },
@@ -81,7 +81,7 @@ export const otpApi = async ({ email, otp }: OtpApi) => {
       { email, otp: +otp },
       {
         headers: {
-          'x-api-key': process.env.NEXT_PUBLIC_API_X,
+          'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
           'Content-Type': 'application/json',
         },
       },
@@ -100,7 +100,7 @@ export const newPasswordApi = async ({ newPassword, token }: NewPasswordApi) => 
       { newPassword },
       {
         headers: {
-          'x-api-key': process.env.NEXT_PUBLIC_API_X,
+          'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
           'Content-Type': 'application/json',
         },
         params: { token },
