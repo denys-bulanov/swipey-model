@@ -13,10 +13,10 @@ function InitCharacter() {
   const alreadyLoaded = useAppSelector(state => !!state.character.slug)
 
   useEffect(() => {
-    if (!alreadyLoaded) {
+    if (!alreadyLoaded && params?.slug) {
       dispatch(fetchCharacter(`${params.slug}`))
     }
-  }, [alreadyLoaded, dispatch])
+  }, [dispatch, params, alreadyLoaded])
 
   return null
 }
