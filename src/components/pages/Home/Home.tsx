@@ -5,10 +5,6 @@ import Message from '../../../shared/Message/Message'
 import Cookies from 'js-cookie'
 
 const Home = ({}) => {
-  // const [open, setOpen] = useState(false)
-  console.log('Все куки:', Cookies.get())
-  console.log(document.cookie)
-
   return (
     <>
       <Message corner='bottom-left' text='Only 3 fanclub spots left today. Will you claim me?' animated />

@@ -45,7 +45,6 @@ const Register = () => {
       // console.log('cookie', cookie)
       console.log('Все куки:', Cookies.get())
 
-      console.log(document.cookie)
       // const query = {
       //   clickId:
       //   utm_source:

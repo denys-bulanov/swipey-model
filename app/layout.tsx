@@ -6,6 +6,7 @@ import Logo from '@/src/shared/Logo/Logo'
 import { StoreProvider } from '@/src/components/StoreProvider/StoreProvider'
 import LoadingProvider from '@/src/components/LoadingProvider/LoadingProvider'
 import TrackingScript from '@/src/components/TrackingScript'
+import CatchQueryParams from '@/src/components/CatchQueryParams'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -37,6 +38,7 @@ export default function RootLayout({
 
       <body className={`${anton.variable} ${poppins.variable} antialiased font-poppins`}>
         <StoreProvider>
+          <CatchQueryParams />
           <LoadingProvider>
             <Logo />
             {children}
