@@ -6,7 +6,9 @@ import Button from '@/src/shared/Button/Button'
 import Header from '@/src/shared/Header/Header'
 import Message from '@/src/shared/Message/Message'
 import { useParams, useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
+import { log } from 'console'
 
 const Register = () => {
   const router = useRouter()
@@ -39,7 +41,14 @@ const Register = () => {
       return
     } else {
       console.log('Успешная регистрация:', data)
-      router.push(data.loginUrl)
+      // const cookie = Cookies.get('utm_source')
+      // console.log('cookie', cookie)
+      console.log('Все куки:', Cookies.get())
+
+      console.log(document.cookie)
+
+      const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?auth_token=${data.authToken}&auth_type=login_paywall`
+      router.push(url)
     }
   }
 
