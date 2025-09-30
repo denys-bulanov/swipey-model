@@ -46,6 +46,16 @@ const Register = () => {
       console.log('Все куки:', Cookies.get())
 
       console.log(document.cookie)
+      // const query = {
+      //   clickId:
+      //   utm_source:
+      //   utm_medium:
+      //   utm_campaign:
+      //   utm_content:
+      //   cmpid:
+      //   pubid:
+      //   ref_id:
+      // }
 
       const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?auth_token=${data.authToken}&auth_type=login_paywall`
       router.push(url)

@@ -47,7 +47,8 @@ const Login = () => {
       return
     } else {
       console.log('Успешный логин:', data)
-      router.push(data.loginUrl)
+      const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?auth_token=${data.authToken}&auth_type=login_paywall`
+      router.push(url)
     }
   }
 
