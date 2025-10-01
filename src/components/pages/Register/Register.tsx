@@ -67,7 +67,7 @@ const Register = () => {
             .join('&') + '?'
       }
 
-      const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?${queryString}?auth_token=${data.authToken}&auth_type=login_paywall`
+      const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?${queryString}auth_token=${data.authToken}&auth_type=login_paywall`
       console.log('url', url)
 
       router.push(url)
