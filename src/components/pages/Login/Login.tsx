@@ -56,11 +56,11 @@ const Login = () => {
       if (raw) {
         const utm_params = JSON.parse(raw)
 
-        queryString =
-          Object.entries(utm_params)
-            .filter(([_, value]) => value)
-            .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`)
-            .join('&') + '?'
+        queryString = Object.entries(utm_params)
+          .filter(([_, value]) => value)
+          .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`)
+          .join('&')
+        queryString && queryString + '?'
       }
 
       const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?${queryString}auth_token=${data.authToken}&auth_type=login_paywall`
