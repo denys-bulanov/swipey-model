@@ -64,7 +64,9 @@ const Register = () => {
           .filter(([_, value]) => value)
           .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`)
           .join('&')
-        queryString && queryString + '&'
+        if (queryString) {
+          queryString += '&'
+        }
       }
 
       const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?${queryString}auth_token=${data.authToken}&auth_type=login_paywall`
