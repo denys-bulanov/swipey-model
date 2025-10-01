@@ -23,6 +23,21 @@ const Register = () => {
   const togglePassword = () => {
     setShowPassword(prev => !prev)
   }
+  useEffect(() => {
+    const raw = localStorage.getItem('utm_params')
+    let queryString = ''
+    if (raw) {
+      const utm_params = JSON.parse(raw)
+
+      queryString = Object.entries(utm_params)
+        .filter(([_, value]) => value)
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`)
+        .join('&')
+    }
+
+    const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?${queryString}?&auth_type=login_paywall`
+    console.log('url', url)
+  }, [])
 
   const handleLogIn = () => {
     router.push(`/${params.slug}/login`)
