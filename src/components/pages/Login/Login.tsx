@@ -47,7 +47,25 @@ const Login = () => {
       return
     } else {
       console.log('Успешный логин:', data)
-      const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?auth_token=${data.authToken}&auth_type=login_paywall`
+
+      // const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?auth_token=${data.authToken}&auth_type=login_paywall`
+      // router.push(url)
+
+      const raw = localStorage.getItem('utm_params')
+      let queryString = ''
+      if (raw) {
+        const utm_params = JSON.parse(raw)
+
+        queryString =
+          Object.entries(utm_params)
+            .filter(([_, value]) => value)
+            .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`)
+            .join('&') + '?'
+      }
+
+      const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?${queryString}?auth_token=${data.authToken}&auth_type=login_paywall`
+      console.log('url', url)
+
       router.push(url)
     }
   }
