@@ -55,8 +55,20 @@ const Register = () => {
       //   pubid:
       //   ref_id:
       // }
+      const raw = localStorage.getItem('utm_params')
+      let queryString = ''
+      if (raw) {
+        const utm_params = JSON.parse(raw)
 
-      const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?auth_token=${data.authToken}&auth_type=login_paywall`
+        queryString = Object.entries(utm_params)
+          .filter(([_, value]) => value)
+          .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value as string)}`)
+          .join('&')
+      }
+
+      const url = `https://${process.env.NEXT_PUBLIC_URL}/${params.slug}/paywall?${queryString}?auth_token=${data.authToken}&auth_type=login_paywall`
+      console.log('url', url)
+
       router.push(url)
     }
   }
